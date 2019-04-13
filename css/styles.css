@@ -1,0 +1,153 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+ }
+
+
+html {
+	display: grid;
+	grid-template-columns: 1fr 4fr 1fr;
+	grid-template-rows: 1fr;
+	height: 90%;
+	width: 100%;
+	padding-top: 2em;
+}
+
+body {
+	grid-column: 2;
+	border: 3px solid red;
+	border-radius: 15px;
+	overflow: hidden;
+	overflow: -moz-hidden-unscrollable;
+	box-shadow: 1px 1px 10px black;
+}
+
+.outer-wrapper {
+	min-height: 100%;
+	max-height: 100%;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: auto 1fr auto;
+	border-radius: 12px;
+	overflow: hidden;
+}
+
+header {
+	position: relative;
+	grid-row: 1;
+	background-color: grey;
+}
+
+main {
+	grid-row: 2;
+	overflow: hidden;
+	max-height: 100%;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr;
+	grid-gap: 1em;
+	padding: 0 1em;
+	background-color: grey;
+}
+
+.main__item {
+	border: 3px solid red;
+	background-color: #F5F5DC;
+	border-radius: 5px;
+	box-shadow:
+		inset 1px 1px 5px #adadad
+		/*,inset -1px -1px 5px #adadad*/;
+}
+
+.main-left-or-bottom {
+	overflow-y: scroll;
+	max-height: 100%;
+}
+
+#modal-container {
+	display: none;
+	padding: 20px;
+	height: 100%;
+	width: 100%;
+	z-index: 999;
+	background: rgba(0, 0, 0, 0.5);
+}
+
+#modal-container.is-visible {
+	display: block;
+}
+
+.modal {
+	margin: auto;
+  display: inline-block;
+  box-sizing: border-box;
+  background: blue;
+  padding: 15px;
+  width: 100%;
+  text-align: center;
+}
+
+.modal-close {
+  float: right;
+  border: 0;
+  background: none;
+  color: #777;
+  text-decoration: underline;
+}
+
+footer {
+	grid-row: 3;
+	background-color: grey;
+	padding: 1em;
+}
+
+footer > p {
+	text-align: center;
+	letter-spacing: 0.1em;
+}
+
+h1 {
+	font-weight: 800;
+	text-align: center;
+	letter-spacing: 0.3em;
+	color: purple;
+	text-shadow:
+		-1px -1px 2px blue,
+		1px -1px 2px blue,
+		-1px 3px 2px blue,
+		1px 1px 2px blue;
+}
+
+ul {
+	list-style-type: none;
+	padding-left: 0;
+}
+
+@media only screen and (max-width: 500px) {
+
+	html {
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-template-rows: 1fr;
+		height: 100%;
+		width: 100%;
+		padding: 0;
+	}
+
+	body {
+		grid-column: 1;
+	}
+
+
+	main {
+		grid-row: 2;
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-template-rows: 3fr 5fr;
+	}
+
+	.main-right-or-top {
+		grid-row: 1;
+	}
+}
