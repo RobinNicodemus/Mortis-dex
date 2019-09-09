@@ -2,6 +2,7 @@
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
+	font-family: Montserrat;
  }
 
 
@@ -16,11 +17,12 @@ html {
 
 body {
 	grid-column: 2;
-	border: 3px solid red;
-	border-radius: 15px;
+	border: 4px solid black;
+	border-radius: 17px;
 	overflow: hidden;
 	overflow: -moz-hidden-unscrollable;
 	box-shadow: 1px 1px 10px black;
+	max-width: 900px;
 }
 
 .outer-wrapper {
@@ -37,6 +39,7 @@ header {
 	position: relative;
 	grid-row: 1;
 	background-color: grey;
+	padding: 1em;
 }
 
 main {
@@ -52,7 +55,7 @@ main {
 }
 
 .main__item {
-	border: 3px solid red;
+	border: 3px solid darkgrey;
 	background-color: #F5F5DC;
 	border-radius: 5px;
 	box-shadow:
@@ -72,17 +75,19 @@ main {
 	width: 100%;
 	z-index: 999;
 	background: rgba(0, 0, 0, 0.5);
+	align-content: start;
 }
 
 #modal-container.is-visible {
-	display: block;
+	display: grid;
 }
 
 .modal {
+	position: static;
 	margin: auto;
   display: inline-block;
   box-sizing: border-box;
-  background: blue;
+  background: rgba(0,0,0,0.5);
   padding: 15px;
   width: 100%;
   text-align: center;
@@ -96,6 +101,21 @@ main {
   text-decoration: underline;
 }
 
+.modal-img {
+	width: 60%;
+	border-radius: 0.1em;
+}
+
+.modal-title {
+	color: lightgrey;
+}
+
+.modal > p {
+	color: lightgrey;
+	margin: 0.5em;
+	font-size: small;
+}
+
 footer {
 	grid-row: 3;
 	background-color: grey;
@@ -105,23 +125,52 @@ footer {
 footer > p {
 	text-align: center;
 	letter-spacing: 0.1em;
+	color: lightgray;
+	text-shadow:
+		-1px -1px 2px #474753,
+		1px -1px 2px #474753,
+		-1px 3px 2px #474753,
+		1px 1px 2px #474753;
+}
+
+modal > p {
+	font-size: 0.3em;
 }
 
 h1 {
 	font-weight: 800;
 	text-align: center;
 	letter-spacing: 0.3em;
-	color: purple;
+	color: lightgray;
 	text-shadow:
-		-1px -1px 2px blue,
-		1px -1px 2px blue,
-		-1px 3px 2px blue,
-		1px 1px 2px blue;
+		-1px -1px 2px #474753,
+		1px -1px 2px #474753,
+		-1px 3px 2px #474753,
+		1px 1px 2px #474753;
 }
 
 ul {
 	list-style-type: none;
 	padding-left: 0;
+}
+
+.list__item {
+	width: 100%;
+	margin-bottom: 0.2em;
+	border: 1px solid black;
+}
+
+.list-item__button {
+	width: 100%;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	background-color: rgba(0,0,0,0.5);
+	transition: background-color 0.4s;
+}
+
+.list-item__button:hover,
+.list-item__button:focus {
+	background-color: rgba(0,0,0,0.2)
 }
 
 @media only screen and (max-width: 500px) {
