@@ -240,6 +240,9 @@ var dR = (function($) {
         dR.addListItem(obj);
       });
     });
+
+  //real time search function:
+  $('.search').attr('oninput', 'dR.updateList(this.value)');
   //end $(document).ready :
   });
 
