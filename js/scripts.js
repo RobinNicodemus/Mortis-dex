@@ -158,7 +158,7 @@ var dR = (function($) {
       .append('<div class="modal"></div>');
     //2
     $('.modal')
-        .append('<button class="modal-close">close<button>')
+        .append('<button class="modal-close">close</button>')
         .append('<h2 class="modal-title"></h2>')
         .append('<img class="modal-img">')
         .append('<p class="modal-birth"></p>')
