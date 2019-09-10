@@ -86,44 +86,32 @@ var dR = (function($) {
 
 
 //THIS IS A TEMPORARY AND BAD WORKAROUND
+//Does not work. please look into promises more
   function loadListRepeater() {
     var d = $.Deferred();
-      setTimeout(function() {
-          loadList();
-      }, 2000);
-      setTimeout(function() {
-          loadList();
-      }, 4000);
-      setTimeout(function() {
-          loadList();
-      }, 6000);
-      setTimeout(function() {
-          loadList();
-      },8000);
-      setTimeout(function() {
-          loadList();
-      }, 10000);
-      setTimeout(function() {
-          loadList();
-          d.resolve();
-      }, 12000);
-      setTimeout(function() {
-          d.resolve();
-      }, 13000);
+    loadList().then(function(){
+      loadList().then(function(){
+        loadList().then(function(){
+          loadList().then(function(){
+             console.log('end');
+             return d.promise();
+            });
+          });
+        });
+      });
      return d.promise();
   };
   // function loadListRepeater() {
-  //   var d = $.Deferred();
+  //  var d = $.Deferred();
   //
-  //   loadList().then( function(){
-  //     var pages = urlInfo[0].pages;
-  //
-  //     async function loop() {
-  //       for (i = 1; i < pages; i++) {
-  //         await loadList();
-  //       }
+  //  // loadList().then( function(){
+  //     var pages = urlInfo.pages;
+  //       for (i = 0; i < pages; i++) {
+  //         setTimeout( function () {
+  //         loadList();
+  //       }, 400);
   //     }
-  //   });
+  //   // });
   //   d.resolve();
   //   return d.promise();
   // };
@@ -232,13 +220,16 @@ var dR = (function($) {
   }
   //modal modification end
 
+  function printList() {
+    var repo = dR.getAll();
+    $.each(repo, function(i,obj ){
+      dR.addListItem(obj);
+  });}
+
   $(document).ready(function(){
   //here comes stuff that depends on the DOM
     dR.loadList().then(function(){
-      var repo = dR.getAll();
-      $.each(repo, function(i,obj ){
-        dR.addListItem(obj);
-      });
+      dR.printList();
     });
 
   //real time search function:
@@ -247,6 +238,7 @@ var dR = (function($) {
   });
 
   return {
+    printList: printList,
     updateList: updateList,
     filterByName: filterByName,
     showModal: showModal,
