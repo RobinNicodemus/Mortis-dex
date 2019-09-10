@@ -42,6 +42,13 @@ header {
 	padding: 1em;
 }
 
+.search {
+	padding: 0.3em;
+	border: 1px solid lightgray;
+	border-radius: 3px;
+	margin-top: 0.5em;
+}
+
 main {
 	grid-row: 2;
 	overflow: hidden;
@@ -74,7 +81,7 @@ main {
 	height: 100%;
 	width: 100%;
 	z-index: 999;
-	background: rgba(0, 0, 0, 0.5);
+	background-color: rgba(0, 0, 0, 0.5);
 	align-content: start;
 }
 
@@ -149,6 +156,11 @@ h1 {
 		1px 1px 2px #474753;
 }
 
+h2 {
+	letter-spacing: 0.3em;
+	color: lightgray;
+}
+
 ul {
 	list-style-type: none;
 	padding-left: 0;
@@ -193,10 +205,47 @@ ul {
 		grid-row: 2;
 		display: grid;
 		grid-template-columns: 1fr;
-		grid-template-rows: 3fr 5fr;
+		grid-template-rows: 2fr 3fr;
+	}
+
+	footer {
+		grid-row: 3;
+		background-color: grey;
+		padding: 0.3em;
+	}
+
+	h1 {
+		font-size: medium;
+		font-weight: 400;
+		text-align: center;
+		letter-spacing: 0.3em;
+		color: lightgray;
+		text-shadow:
+			-1px -1px 2px #474753,
+			1px -1px 2px #474753,
+			-1px 3px 2px #474753,
+			1px 1px 2px #474753;
 	}
 
 	.main-right-or-top {
 		grid-row: 1;
+	}
+
+	.modal > h2 {
+		font-size: medium;
+	}
+
+	.modal > p {
+		font-size:  small;
+	}
+}
+
+@media only screen and (max-height: 700px) {
+	#modal-container {
+		position: absolute;
+		top: 0;
+		left: 0;
+		background-color: rgba(0, 0, 0, 0.5);
+		align-content: center;
 	}
 }
