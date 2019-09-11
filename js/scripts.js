@@ -45,7 +45,7 @@ var dR = (function($) {
 
   function addListItem(mortuusObj) {
     //append a <li> with a <button> inside:
-    $('#data-list').append('<li class="mortuus-list__item text-center"><button class="list-item__button text-center btn btn-dark"></button></li>');
+    $('#data-list').append('<li class="mortuus-list__item list-inline-item text-center"><button class="list-item__button text-center btn btn-dark"></button></li>');
     //set button text and functionality:
     $('.list-item__button').last()
       .attr('data-toggle','modal')
