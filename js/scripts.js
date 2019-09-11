@@ -54,26 +54,34 @@ var dR = (function($) {
       });
   }
 
-//don´t forget to iterate through the other pages as well
+  function urlReset() {
+    urlInfo.next = apiUrl;
+  }
+
   function loadList() {
     var d = $.Deferred();
-      $.ajax(urlInfo.next, {
-        method: 'GET',
-        dataType: 'json',
-        timeout: 4000
-      }).then(function(response){
-          console.log(response)
-          //update the url
-          var meta = response.info;
-          updateUrl(meta);
 
-          //iterate through the response:
-          var results = response.results;
-          $.each(results, function(i){
+    //if urlInfo.next is empty it will reset to the start
+    if (!urlInfo.next){
+      urlReset();
+    }
+
+    $.ajax(urlInfo.next, {
+      method: 'GET',
+      dataType: 'json',
+      timeout: 4000
+    }).then(function(response){
+        //update the url
+        var meta = response.info;
+        updateUrl(meta);
+
+        //iterate through the response:
+        var results = response.results;
+        $.each(results, function(i){
             var deadObj = {
               name: results[i].name,
               detailsUrl: results[i].url
-            };
+              };
             add(deadObj);
             d.resolve();
           });
@@ -84,38 +92,11 @@ var dR = (function($) {
       return d.promise();
   }
 
-
-//THIS IS A TEMPORARY AND BAD WORKAROUND
-//Does not work. please look into promises more
-  function loadListRepeater() {
-    var d = $.Deferred();
-    loadList().then(function(){
-      loadList().then(function(){
-        loadList().then(function(){
-          loadList().then(function(){
-             console.log('end');
-             return d.promise();
-            });
-          });
-        });
-      });
-     return d.promise();
-  };
-  // function loadListRepeater() {
-  //  var d = $.Deferred();
-  //
-  //  // loadList().then( function(){
-  //     var pages = urlInfo.pages;
-  //       for (i = 0; i < pages; i++) {
-  //         setTimeout( function () {
-  //         loadList();
-  //       }, 400);
-  //     }
-  //   // });
-  //   d.resolve();
-  //   return d.promise();
-  // };
-
+  async function loadListRepeater() {
+      for (i = 0; i < urlInfo.pages; i++) {
+        const test = await loadList();
+      }
+  }
 
   function loadDetails(repositoryObject) {
     var d = $.Deferred();
@@ -144,7 +125,6 @@ var dR = (function($) {
 
   function showDetails(mortuusObj) {
     loadDetails(mortuusObj).then(function() {
-			console.log(mortuusObj);
 		  showModal(mortuusObj);
     })
   }
@@ -227,13 +207,18 @@ var dR = (function($) {
   });}
 
   $(document).ready(function(){
-  //here comes stuff that depends on the DOM
-    dR.loadList().then(function(){
+    //Starter:
+    //1. Load the first 20 Items, then show them.
+    //2. Only then load and show the rest.
+    dR.loadList().then(function(){ //1.
       dR.printList();
-    });
-
-  //real time search function:
-  $('.search').attr('oninput', 'dR.updateList(this.value)');
+    }).then(function(){ //2.
+      dR.loadListRepeater().then(function(){
+          dR.printList();
+        });
+      });
+    //real time search function:
+    $('.search').attr('oninput', 'dR.updateList(this.value)');
   //end $(document).ready :
   });
 
