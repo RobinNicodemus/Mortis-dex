@@ -185,6 +185,10 @@ ul {
 	background-color: rgba(0,0,0,0.2)
 }
 
+.modal > h3 {
+	letter-spacing: 0.2em;
+}
+
 @media only screen and (max-width: 500px) {
 
 	html {
@@ -231,7 +235,7 @@ ul {
 		grid-row: 1;
 	}
 
-	.modal > h2 {
+	.modal > h3 {
 		font-size: medium;
 	}
 
