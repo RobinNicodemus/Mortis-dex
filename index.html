@@ -9,26 +9,22 @@
    <link rel="stylesheet" type="text/css" href="css/styles.css">
    <title>Mortis Dex</title>
   </head>
-  <body class="container">
-    <div class="outer-wrapper col">
-      <header class="row">
+  <body>
+    <div class="body container">
+      <nav class="navbar container">
         <h1 class="col">Mortuus Dex</h1>
         <div class="col-4">
           <input class="search" type="search" placeholder="search by name ..."/>
         </div>
-      </header>
-      <main class="row">
-        <div class="main__item main-left-or-bottom col">
-          <ul id='data-list' class="list-unstyled list-inline">
-          </ul>
-        </div>
-      </main>
-      <footer class="row">
-        <div class="col">
-          <p class="text-center">requiescat in pace</p>
-        </div>
-      </footer>
+      </nav>
+      <div class="main">
+        <div class="list-group" id='data-list'></div>
+      </div>
+      <div class="footer container">
+        <p class="col text-center">requiescat in pace</p>
+      </div>
     </div>
+
     <div class="modal fade" id='detailsModal'>
       <div class="modal-dialog" role="document">
         <div class="modal-content">
