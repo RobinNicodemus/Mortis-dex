@@ -93,7 +93,7 @@ var dR = (function($) {
   }
 
   async function loadListRepeater() {
-      for (i = 0; i < urlInfo.pages; i++) {
+      for (i = 1; i < urlInfo.pages; i++) {
         const test = await loadList();
       }
   }
@@ -139,7 +139,7 @@ var dR = (function($) {
     //2
     $('.modal')
         .append('<button class="modal-close">close</button>')
-        .append('<h2 class="modal-title"></h2>')
+        .append('<h3 class="modal-title"></h3>')
         .append('<img class="modal-img">')
         .append('<p class="modal-birth"></p>')
         .append('<p class="modal-death"></p>')
