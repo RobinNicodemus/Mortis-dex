@@ -213,7 +213,7 @@ var dR = (function($) {
   }
 
   function getSpeciesText(mortuusObj) {
-    if (mortuusObj.location === "unknown") {
+    if (mortuusObj.species === "unknown") {
       return getPossesivePronoun(mortuusObj)+ ' family values the time they had together.';
     }
     return getPossesivePronoun(mortuusObj)+ ' ' + mortuusObj.species +' family values the time they had together.';
