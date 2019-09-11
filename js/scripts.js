@@ -45,9 +45,11 @@ var dR = (function($) {
 
   function addListItem(mortuusObj) {
     //append a <li> with a <button> inside:
-    $('#data-list').append('<li class="mortuus-list__item"><button class="list-item__button"></button></li>');
+    $('#data-list').append('<li class="mortuus-list__item text-center"><button class="list-item__button text-center btn btn-dark"></button></li>');
     //set button text and functionality:
     $('.list-item__button').last()
+      .attr('data-toggle','modal')
+      .attr('data-target', '#detailsModal')
       .text(mortuusObj.name)
       .click(function(event){
         showDetails(mortuusObj);
@@ -149,42 +151,21 @@ var dR = (function($) {
     })
   }
 
-  //1. create a modal, 2. append children incl classes,
-  // 3. add fixed content, 4. add flexible content, 5. show it all
   function showModal(mortuusObj) {
-    // 1
-    $('#modal-container')
-      .empty()
-      .append('<div class="modal"></div>');
-    //2
-    $('.modal')
-        .append('<button class="modal-close">close</button>')
-        .append('<h2 class="modal-title"></h2>')
-        .append('<img class="modal-img">')
-        .append('<p class="modal-birth"></p>')
-        .append('<p class="modal-death"></p>')
-        .append('<p class="modal-species"></p>');
-    //3
-    $('.modal-close').click(function() {hideModal();});
+  //  $('.close').click(function() {hideModal();});
     $('.modal-title').text(mortuusObj.name);
+
+    $('.modal-body')
+      .empty()
+      .append('<img class="modal-img"/>')
+      .append('<p class="modal-birth"><p>')
+      .append('<p class="modal-death"><p>')
+      .append('<p class="modal-species"><p>');
+
     $('.modal-img').attr('src', mortuusObj.imageUrl);
-    //4
     $('.modal-birth').text(getBirthText(mortuusObj));
     $('.modal-death').text(getDeathText(mortuusObj));
     $('.modal-species').text(getSpeciesText(mortuusObj));
-    //5
-    $('#modal-container').addClass('is-visible');
-  }
-  //modal EventListeners:
-  $('#modal-container').click(function() {hideModal();});
-  $(document).keydown(function (e) {
-    if (e.key === "Escape") {
-      hideModal();
-    }
-  })
-
-  function hideModal() {
-    $('#modal-container').removeClass('is-visible');
   }
 
   // modal-output modification:
@@ -213,7 +194,7 @@ var dR = (function($) {
   }
 
   function getSpeciesText(mortuusObj) {
-    if (mortuusObj.location === "unknown") {
+    if (mortuusObj.species === "unknown") {
       return getPossesivePronoun(mortuusObj)+ ' family values the time they had together.';
     }
     return getPossesivePronoun(mortuusObj)+ ' ' + mortuusObj.species +' family values the time they had together.';
@@ -231,6 +212,8 @@ var dR = (function($) {
     dR.loadList().then(function(){
       dR.printList();
     });
+
+  $('#detailsModal').modal({backdrop: false})
 
   //real time search function:
   $('.search').attr('oninput', 'dR.updateList(this.value)');
