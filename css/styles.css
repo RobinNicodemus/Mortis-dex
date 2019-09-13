@@ -1,66 +1,66 @@
-/* * {
-	background-color: grey;
-}
+.row {
+	background-color: grey
+ }
 
 .list-group-item {
-
-}
-*/
-.main {
- 	margin-top: 82px;
-	width: 100%;
-	justify-content: center;
-}
-
-.modal-open,
-.navbar,
-.footer {
-  overflow: hidden;
-  padding-right: 0px !important;
-}
-
-.navbar,
-.footer {
-	background-color: grey;
-	border: 5px solid black;
-	border-radius: 0.1em;
-	padding-left: 0;
-	padding-right: 0;
-}
-
-
-.body {
-	border: 5px solid black;
-	background-color: grey;
-	border-radius: 0.1em;
-	padding-left: 0;
-	padding-right: 0;
-}
-
-#data-list {
-	width: 100%;
-}
-
-.list-group-item {
-	color: beige;
+	text-align: center;
+	padding: 0.5em 0;
+	margin: 0.5em 0;
+	color: white;
 	letter-spacing: 0.05em;
-	background-color: grey;
+	background-color: gray;
+	border: 1px solid black;
+	transition:
+		letter-spacing 0.5s,
+		color 1.5s,
+		background-color 1.5s;
+		box-shadow: -3px 5px 5px 3px rgba(0,0,0,0.75);
 }
 
 .list-group-item-action:focus,
 .list-group-item-action:hover {
 	color: beige;
 	background-color: black;
+	letter-spacing: 0.1em;
 }
 
-.search {
-	width: 100%;
-	border-radius: 0.4em;
-	padding: 0.4em;
+.main {
+ 	padding-top: 90px;
+	padding-bottom: 74px;
+	border: 4px solid black;
+	min-height: 100vh;
 }
 
-h1,
-.footer > p {
+#data-list {
+	border-left: 3px solid black;
+	border-right: 3px solid black;
+	padding: 0 1em;
+}
+
+.fixed-top,
+.fixed-bottom {
+	left: auto;
+	right: auto;
+	border-left: 4px solid black;
+	border-right: 4px solid black;
+}
+
+.fixed-top {
+	border-bottom: 3px dotted black;
+}
+
+.fixed-bottom {
+	border-top: 3px dotted black;
+}
+
+.h5 {
+	color: lightgray;
+}
+
+.h1,
+.h5,
+.footer > span
+ {
 	letter-spacing: 0.3em;
 	color: lightgray;
 	text-shadow:
@@ -70,14 +70,40 @@ h1,
 		1px 1px 2px #474753;
 }
 
-.footer > p {
-	padding: 0.5em;
-  text-transform: uppercase;
+.h5 {
 	letter-spacing: 0.1em;
-	color: lightgray;
-	text-shadow:
-		-1px -1px 2px #474753,
-		1px -1px 2px #474753,
-		-1px 3px 2px #474753,
-		1px 1px 2px #474753;
+}
+
+.container {
+  padding-right: 15px !important;
+	padding-left: 15px !important;
+}
+
+.modal-content {
+	background-color: #bdbdbd;
+}
+
+button.close {
+	text-decoration: underline;
+}
+
+.modal-img {
+	max-width: 80%;
+}
+
+input.search {
+	padding: 0.1em;
+	border-radius: 0.4em;
+	border: 3px solid lightgray;
+}
+
+@media only screen and (max-width: 576px) {
+	span.header {
+		display: none;
+	}
+
+	.main {
+	 	padding-top: 59px;
+		padding-bottom: 43px;
+		}
 }

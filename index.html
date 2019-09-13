@@ -7,25 +7,24 @@
 	 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto&amp;subset=latin-ext" rel="stylesheet">
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
    <link rel="stylesheet" type="text/css" href="css/styles.css">
-   <title>Mortis Dex</title>
+   <title>Mortuus Dex</title>
   </head>
-  <body>
-    <div class="body container">
-      <nav class="navbar container fixed-top">
-        <h1 class="col">Mortuus Dex</h1>
-        <div class="col-4">
-          <input class="search" type="search" placeholder="search by name ..."/>
-        </div>
+  <body class="container" id="body">
+      <nav class=" row navbar container fixed-top py-sm-4">
+        <span class="navbar-brand mb-0 mr-0 h1">💀</span>
+        <span class="navbar-brand mb-0 header h1">Mortuus Dex</span>
+        <input class="search ml-auto" type="search" aria-label="Search" placeholder="search by name ..."/>
       </nav>
-      <div class="main">
-        <div class="list-group" id='data-list'></div>
+      <div class="row main">
+        <div class="list-group w-75 m-auto" id='data-list'></div>
       </div>
-      <div class="footer container fixed-bottom">
-        <p class="col text-center">requiescat in pace</p>
+      <div class="row footer py-2 py-sm-4 container fixed-bottom">
+        <span class="ml-auto text-center">requiescat in pace</span>
+        <span class="span-bottom">💀</span>
       </div>
-    </div>
 
-    <div class="modal fade" id='detailsModal'>
+ <!-- Modal -->
+    <div class="modal fade" id='detailsModal' aria-label="modalContainer" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
