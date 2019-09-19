@@ -3,10 +3,15 @@
         "es6": true,
         "browser": true
     },
+    "parserOptions": {
+        "ecmaVersion": 8
+        },
     "extends": [
         "eslint:recommended"
     ],
     "rules": {
-        "quotes": ["error", "single"]
+        "quotes": ["error", "single"],
+        "no-unused-vars": "off",
+        "no-undef": "off"
     }
 }
